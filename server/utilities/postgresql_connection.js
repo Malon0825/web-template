@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
     database: {
         dialect: 'postgres',
         host: 'localhost',
@@ -8,3 +8,6 @@ module.exports = {
         database: 'NodeAppDB'
     }
 };
+
+
+export default config;
