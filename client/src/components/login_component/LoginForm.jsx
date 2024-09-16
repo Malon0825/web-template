@@ -1,18 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
     return (
-        <form className="space-y-6">
+        <form className="space-y-6 relative w-[320px] ss:w-full">
             <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email
+                    Username
                 </label>
                 <input
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="Example@email.com"
-                    className="w-full px-3 py-2 border border-transparent focus:border-transparent rounded-xl text-sm h-12 bg-input_field drop-shadow-md"
+                    placeholder="Write your username"
+                    className="relative w-full px-3 py-2 border border-transparent focus:border-transparent rounded-xl text-sm h-12 bg-input_field drop-shadow-md"
                 />
             </div>
             <div>
@@ -28,9 +29,7 @@ const LoginForm = () => {
                 />
             </div>
             <div className="text-right">
-                <a href="#" className="text-sm text-blue-600 hover:underline">
-                    Forgot Password?
-                </a>
+                <Link className="text-sm text-blue-600 hover:underline" to="/forgot-password">Forgot Password?</Link>
             </div>
             <button
                 type="submit"
@@ -39,6 +38,7 @@ const LoginForm = () => {
                 Sign in
             </button>
         </form>
+
     );
 };
 

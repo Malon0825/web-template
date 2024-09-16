@@ -40,6 +40,23 @@ class AuthController {
             return res.status(500).json({ error: 'Internal Server Error', message: error.message });
         }
     }
+
+    
+    async updateUserPassword(req, res) {
+        try {
+            const { id, username, password } = req.body;
+    
+            if (!username || !password) {
+                return res.status(400).json({ message: 'Username and password are required' });
+            }
+            const userData = new UserEntity(id, username, password, null);
+            const updatedUserData = await this.authUsecase.updateUserPassword(userData);
+            return res.status(200).json(updatedUserData);
+        } catch (error) {
+            console.error('Error in UserController.updateUserData:', error);
+            return res.status(500).json({ error: 'Internal Server Error', message: error.message });
+        }
+    }
 }
 
 export default AuthController;

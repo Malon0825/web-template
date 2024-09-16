@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Login, Signup, ForgotPassword } from './components'
+import { Login, Signup, ForgotPassword, LandingPage } from './components'
 import { login_bg } from './assets';
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/home" element={<LandingPage />} />
         <Route path="/" element={<Navigate replace to="/login" />} />
       </Routes>
 

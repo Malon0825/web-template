@@ -50,3 +50,37 @@ export const addUserData = async (username, password, position) => {
     }
 };
 
+/**
+ * Updates an existing user in the database.
+ * @param {number} id - The ID of the user to update.
+ * @param {string} password - The new password for the user.
+ * @returns {Promise<Object>} - The updated user details (id, username, position).
+ */
+export const updateUserPassword = async (id, password) => {
+    try {
+        const [updatedRowsCount, updatedUsers] = await User.update({
+            password
+        }, {
+            where: { id },
+            returning: true 
+        });
+
+        if (updatedRowsCount === 0) {
+            throw new Error('User not found or no changes made');
+        }
+        const updatedUser = updatedUsers[0];
+        
+        return {
+            id: updatedUser.id,
+            username: updatedUser.username,
+            position: updatedUser.position
+        };
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+};
+
+
+
+

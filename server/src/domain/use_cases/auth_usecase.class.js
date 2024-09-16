@@ -42,6 +42,22 @@ class AuthUsecase {
             throw error;
         }
     }   
+    
+    async updateUserPassword(userEntity) {
+        try {
+            const userData = await this.authRepository.updateUserPassword(userEntity);
+    
+            if (!userData) {
+                throw new Error('Password updated failed');
+            }
+            const user = new UserEntity(null, null, userData.password, null);
+            
+            return user; 
+        } catch (error) {
+            console.error('Error in AuthUsecase.updateUserPassword:', error);
+            throw error;
+        }
+    }
 }
 
 export default AuthUsecase;
